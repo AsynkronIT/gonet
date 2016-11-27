@@ -6,15 +6,15 @@ import (
 	"strconv"
 )
 
-func findFreePort() int {
+func FindFreePort() int {
 	l, _ := net.Listen("tcp", ":0")
 	defer l.Close()
 	s := l.Addr().String()
-	_, p := getAddress(s)
+	_, p := GetAddress(s)
 	return p
 }
 
-func getAddress(addr string) (string, int) {
+func GetAddress(addr string) (string, int) {
 	h, p, err := net.SplitHostPort(addr)
 	if err != nil {
 		log.Fatalf("[CLUSTER] Failed parsing address '%v', error %v", addr, err)
